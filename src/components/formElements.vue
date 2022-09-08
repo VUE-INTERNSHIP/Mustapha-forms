@@ -21,14 +21,14 @@
           <p>Email: {{ mail }}</p>
           <p>Number: {{ phoneNumber }}</p>
           <p>Password: {{ pword }}</p>
-         <button @click="handleClose">Ok</button>
+         <button @click="handleClose">Close</button>
        </div>
       </div>
   </div>
 </template>
 
 <script>
-import { isValid } from 'ipaddr.js'
+// import { isValid } from 'ipaddr.js'
 
 export default {
   name: 'formElements',
@@ -41,10 +41,13 @@ export default {
       pword:'',
       error:'',
       hasError:false,
-      isValid:false    }
+      isValid:true
+     }
   },
   methods:{
     handleSubmission(){
+      //validations starts here
+
       if(!this.firstName || !this.lastName ){
         this.hasError = true
         this.error = "Pls fill the form"
@@ -53,7 +56,7 @@ export default {
         this.hasError=true
         this.error="Name has to be more than 3 characters"
       }
-      else if(this.phoneNumber.length>11){
+      else if(this.phoneNumber.length!=11){
         this.hasError=true
         this.error="Invalid phone number"
       }
@@ -64,15 +67,20 @@ export default {
       else{
         this.isValid =true
         this.hasError=false
-        this.firstName=""
-        this.lastName=""
-        this.mail=""
-        this.phoneNumber=""
-        this.pword=""
+        
       }
     },
     handleClose(){
+      
       this.isValid=false
+
+      //empty the form fields
+
+      this.firstName=""
+      this.lastName=""
+      this.mail=""
+      this.phoneNumber=""
+      this.pword=""
     }
   }
   
@@ -104,7 +112,7 @@ export default {
   
 }
 .form-input, .form-output{
-  width:40%;
+  width:45%;
 }
 .error{
   background: #fff;
@@ -155,5 +163,27 @@ input[type="text"], input[type="email"] ,input[type="password"],input[type="numb
     cursor:pointer;
     color:#fff;
     background: rgb(32, 32, 235);
+  }
+  @media only screen and (max-width: 600px) {
+    .container{
+      width:100%;
+      height:auto;
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction:column;
+      background: rgb(230, 230, 230);
+    }
+    .form-input, .form-output{
+      width:100%;
+    }
+    input[type="text"], input[type="email"] ,input[type="password"],input[type="number"],.form-output >p{
+      width:70%;
+      margin-left:50px;
+    }
+    .submit , .form-output >button{
+      width:40%;
+      margin-left:50px;
+    }
   }
 </style>
