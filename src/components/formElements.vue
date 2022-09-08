@@ -41,7 +41,7 @@ export default {
       pword:'',
       error:'',
       hasError:false,
-      isValid:true
+      isValid:false
      }
   },
   methods:{
@@ -167,12 +167,16 @@ input[type="text"], input[type="email"] ,input[type="password"],input[type="numb
   @media only screen and (max-width: 600px) {
     .container{
       width:100%;
-      height:auto;
+      min-height:95vh;
       display:flex;
       justify-content: center;
       align-items: center;
       flex-direction:column;
       background: rgb(230, 230, 230);
+    }
+    .error{
+      margin-left:50px;
+      width:70%;
     }
     .form-input, .form-output{
       width:100%;
