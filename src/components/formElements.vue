@@ -41,8 +41,7 @@ export default {
       pword:'',
       error:'',
       hasError:false,
-      isValid:true
-    }
+      isValid:false    }
   },
   methods:{
     handleSubmission(){
@@ -65,6 +64,11 @@ export default {
       else{
         this.isValid =true
         this.hasError=false
+        this.firstName=""
+        this.lastName=""
+        this.mail=""
+        this.phoneNumber=""
+        this.pword=""
       }
     },
     handleClose(){
